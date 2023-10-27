@@ -1,8 +1,8 @@
-const { default: slugify } = require("slugify")
-const CategoryDetails = require("../models/createcat")
+import slugify from "slugify";
+import CategoryDetails from "../models/createcat.js"
 
 
-const CategoryController=async(req,res)=>{
+export const CategoryController=async(req,res)=>{
     const{categoryname}=req.body
  
     try{
@@ -31,7 +31,7 @@ return res.status(500).send({
     }
 
 }
-const updateController=async(req,res)=>{
+export const updateController=async(req,res)=>{
     try{
  const {id}=req.params   
  const{categoryname}=req.body
@@ -47,7 +47,7 @@ const updateController=async(req,res)=>{
     console.log(err)
  }
 }
-const getCategoryController=async(req,res)=>{
+export const getCategoryController=async(req,res)=>{
     try{
     
 const getCategory=await CategoryDetails.find({})
@@ -57,7 +57,7 @@ return res.status(200).send({success:true,getCategory})
 return res.status(500).send(err)
     }
 }
-const getSingleCatgeory=async(req,res)=>{
+export const getSingleCatgeory=async(req,res)=>{
     try{
 const{slug}=req.params;
 const getSingleCategory=await CategoryDetails.findOne({slug})
@@ -70,7 +70,7 @@ return res.status(200).send({success:true,getSingleCategory})
 
     }
 }
-const deleteCategoryController=async(req,res)=>{
+export const deleteCategoryController=async(req,res)=>{
     try{
     const{id}=req.params
     const deleteresult=await CategoryDetails.findByIdAndDelete(id)
@@ -86,8 +86,3 @@ catch(err){
 }
 }
 
-module.exports={CategoryController:CategoryController,
-updateController:updateController,
-getCategoryController:getCategoryController,
-getSingleCatgeory:getSingleCatgeory,
-deleteCategoryController:deleteCategoryController}

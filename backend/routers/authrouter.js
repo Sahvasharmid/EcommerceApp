@@ -1,7 +1,16 @@
-const express=require("express")
+import express from "express";
+import {
+  registerController,
+  loginController,
+  adminController,
+  protectedController,
+  forgotPasswordController,
+  updateProfileController,
+
+} from "../controllers/authController.js";
+import { isAdmin,verifytoken } from "../middlewares/authMiddleware.js";
+
 const router=express.Router()
-const {verifytoken,isAdmin}=require("../middlewares/authMiddleware")
-const {registerController,loginController, protectedController,forgotPasswordController, adminController,updateProfileController} = require("../controllers/authController")
 
 
 
@@ -13,4 +22,4 @@ router.post("/forgotpassword",forgotPasswordController)
 router.get("/adminroute",verifytoken,isAdmin,adminController)
 router.put("/profile", verifytoken, updateProfileController);
 
-module.exports=router
+export default router;

@@ -1,7 +1,10 @@
-const express=require("express")
-const router=express.Router()
-const {CategoryController,updateController, getCategoryController, getSingleCatgeory, deleteCategoryController,getCategoryProductController} = require("../controllers/CategoryController")
-const { verifytoken, isAdmin } = require("../middlewares/authMiddleware")
+import express from "express";
+import { isAdmin, verifytoken } from "../middlewares/authMiddleware.js";
+import {CategoryController,updateController, getCategoryController, getSingleCatgeory, deleteCategoryController} from "../controllers/CategoryController.js";
+
+const router = express.Router();
+
+
 
 
 router.post("/createnew",verifytoken,isAdmin,CategoryController)
@@ -12,4 +15,4 @@ router.get("/getcategory",getCategoryController)
 router.get("/getsinglecategory/:slug",getSingleCatgeory)
 router.delete("/deletecategory/:id",verifytoken,isAdmin,deleteCategoryController)
 
-module.exports=router
+export default router;

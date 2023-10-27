@@ -1,9 +1,10 @@
-const fs=require("fs")
-const ProductSet = require("../models/ProductDetailsModel")
-const CategoryDetails = require("../models/createcat")
-const slugify = require('slugify'); 
-const mongoose=require("mongoose")
-const createProdController=async(req,res)=>{
+
+import fs from "fs";
+import slugify from "slugify";
+import ProductSet from "../models/ProductDetailsModel.js"
+import CategoryDetails from "../models/createcat.js"
+import mongoose from "mongoose";
+export const createProdController=async(req,res)=>{
         try {
           const { name, description, price, Category, quantity,shipping} =
             req.fields;
@@ -51,7 +52,7 @@ const createProdController=async(req,res)=>{
       };
       
       //get all products
-      const getAllproductsController=async(req,res)=>{
+      export const getAllproductsController=async(req,res)=>{
         try{
         const getAllproducts=await ProductSet.find({}).select("-photo").populate("Category").sort({createdAt:-1})
         res.status(200).send({success:true,getAllproducts,  counTotal: getAllproducts.length})}
@@ -59,7 +60,7 @@ const createProdController=async(req,res)=>{
           return res.status(500).send(err)
         }
       }
-      const getSingleprodController=async(req,res)=>{
+      export const getSingleprodController=async(req,res)=>{
         const{slug}=req.params
         const singleProd=await ProductSet.findOne({slug}).populate("Category")
         if(!singleProd){
@@ -69,7 +70,7 @@ const createProdController=async(req,res)=>{
           res.status(200).send({success:true,message:"product found",singleProd})
         }
       }
-      const productPhotoController = async (req, res) => {
+     export const productPhotoController = async (req, res) => {
         const{id}=req.params
         try {
           const product = await ProductSet.findById(id).select("photo")
@@ -87,7 +88,7 @@ const createProdController=async(req,res)=>{
           });
         }
       };
-      const deleteProductController=async(req,res)=>{
+     export const deleteProductController=async(req,res)=>{
         const {id}=req.params
         try{
 
@@ -100,7 +101,7 @@ const createProdController=async(req,res)=>{
         res.status(500).send(err)
       }
       }
-      const deleteAllProductsController = async (req, res) => {
+      export const deleteAllProductsController = async (req, res) => {
         try {
           
           await ProductSet.deleteMany({});
@@ -120,12 +121,9 @@ const createProdController=async(req,res)=>{
         }
       };
       
-      module.exports = {
-        // ...other controllers
-        deleteAllProductsController: deleteAllProductsController,
-      };
+     
       
-      const UpdateProdController=async(req,res)=>{
+      export const UpdateProdController=async(req,res)=>{
         try {
           const {id}=req.params
           const {name, description, price, Category, quantity} = req.fields;
@@ -168,7 +166,7 @@ const createProdController=async(req,res)=>{
         }
       };
       
-      const productFilterController = async (req, res) => {
+      export const productFilterController = async (req, res) => {
         try {
           const { radio, checked } = req.body;
           const args = {};
@@ -194,7 +192,7 @@ const createProdController=async(req,res)=>{
       };
       
         
-      const productCountController=async(req,res)=>{
+     export const productCountController=async(req,res)=>{
         try{
 const total=await ProductSet.find({}).estimatedDocumentCount()
 res.status(200).send({success:true,total})}
@@ -202,7 +200,7 @@ catch(err){
   console.log(err)
 }
       }
-const productPageController=async(req,res)=>{
+export const productPageController=async(req,res)=>{
   try{
 const itemsperpage=6;
 const page=req.params.page?req.params.page:1
@@ -217,7 +215,7 @@ res.status(200).send({
   }
 }
 
- const searchProductController = async (req, res) => {
+export const searchProductController = async (req, res) => {
   try {
     const { keyword } = req.params;
     const resutls = await ProductSet
@@ -239,7 +237,7 @@ res.status(200).send({
   }
 
  }
-const realtedProductController = async (req, res) => {
+export const realtedProductController = async (req, res) => {
   try {
     const { pid, cid } = req.params;
     const products = await ProductSet
@@ -263,7 +261,7 @@ const realtedProductController = async (req, res) => {
     });
   }
 };
-const getCategoryProductController=async(req,res)=>{
+export const getCategoryProductController=async(req,res)=>{
   const {slug}=req.params
   try{
     const category = await CategoryDetails.findOne({ slug });
@@ -291,17 +289,3 @@ res.status(400).send({
 });
 }
 };
-module.exports={createProdController:createProdController,
-getAllproductsController:getAllproductsController,
-getSingleprodController:getSingleprodController,
-productPhotoController:productPhotoController,
-deleteProductController:deleteProductController,
-UpdateProdController:UpdateProdController,
-deleteAllProductsController: deleteAllProductsController,
-productFilterController:productFilterController,
-productCountController:productCountController,
-productPageController:productPageController,
-searchProductController:searchProductController,
-realtedProductController:realtedProductController,
-getCategoryProductController:getCategoryProductController
-}

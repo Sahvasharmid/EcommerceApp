@@ -1,5 +1,4 @@
-const mongoose=require("mongoose")
-
+import mongoose from "mongoose";
 const ProductDetailsSchema=new mongoose.Schema({
     name:{
         type:String,
@@ -43,4 +42,4 @@ shipping: {
 }
 )
 const ProductSet=mongoose.model("ProductDetails",ProductDetailsSchema)
-module.exports=ProductSet
+export default ProductSet;

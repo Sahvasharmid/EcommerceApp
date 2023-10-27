@@ -1,8 +1,8 @@
-const express=require("express")
+import express from 'express'
 const router=express.Router()
-const {verifytoken,isAdmin}=require("../middlewares/authMiddleware")
-const formidable= require('express-formidable');
-const { createProdController, getAllproductsController, getSingleprodController, productPhotoController,getCategoryProductController,realtedProductController,searchProductController,productPageController, deleteProductController, deleteAllProductsController,UpdateProdController,productFilterController,productCountController } = require("../controllers/productController");
+import {verifytoken,isAdmin} from "../middlewares/authMiddleware.js"
+import formidable from "express-formidable";
+import {createProdController, getAllproductsController, getSingleprodController, productPhotoController,getCategoryProductController,realtedProductController,searchProductController,productPageController, deleteProductController, deleteAllProductsController,UpdateProdController,productFilterController,productCountController } from "../controllers/productController.js"
 router.post("/createproduct",verifytoken,isAdmin,formidable(),createProdController)
 router.get("/getallproducts",getAllproductsController)
 router.get("/getsingleproduct/:slug",getSingleprodController)
@@ -16,4 +16,4 @@ router.get("/product/:page",productPageController)
 router.get("/search/:keyword", searchProductController);
 router.get("/related-product/:pid/:cid", realtedProductController);
 router.get("/categories/:slug",getCategoryProductController)
-module.exports=router
+export default router;

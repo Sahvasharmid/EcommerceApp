@@ -1,11 +1,13 @@
-const User=require("../models/usermodel")
-const bcrypt=require("bcrypt")
-const jwt=require("jsonwebtoken")
-const loginController=async(req,res)=>{
+import User from "../models/usermodel.js"
+import bcrypt from "bcrypt"
+
+import jwt from "jsonwebtoken";
+
+export const loginController=async(req,res)=>{
     const{email,password}=req.body
     try{
         
-const loginresult=await User.findOne({email})
+ const loginresult=await User.findOne({email})
     if(!loginresult){
         return res.status(403).send('User not found');  
     }
@@ -32,7 +34,7 @@ const loginresult=await User.findOne({email})
 console.log(err)
     }
 }
-    const registerController=async(req,res)=>{
+ export   const registerController=async(req,res)=>{
         const{username,email,password,phoneno,address,answer}=req.body
      
         try{
@@ -62,10 +64,10 @@ console.log(err)
 
 
 
-      const protectedController=async(req,res)=>{
+    export  const protectedController=async(req,res)=>{
         res.status(200).json({ok:true})
       }
-      const forgotPasswordController=async(req,res)=>{
+     export const forgotPasswordController=async(req,res)=>{
 try{const{email,newpassword,answer}=req.body
 if(!email||!newpassword||!answer){
 return  res.status(400).send("Send all fields")
@@ -91,10 +93,10 @@ catch(err){
   })
 }
       }
-      const adminController=async(req,res)=>{
+    export  const adminController=async(req,res)=>{
 return res.status(200).json({ok:true})
       }
- const updateProfileController = async (req, res) => {
+export const updateProfileController = async (req, res) => {
         try {
           console.log(req.users)
           const { username, email, password, address, phoneno } = req.body;
@@ -129,12 +131,3 @@ return res.status(200).json({ok:true})
           });
         }
       };
-module.exports={
-    loginController:loginController,
-    registerController:registerController,
-
-    protectedController:protectedController,
-    forgotPasswordController:forgotPasswordController,
-    adminController:adminController,
-    updateProfileController:updateProfileController
-};

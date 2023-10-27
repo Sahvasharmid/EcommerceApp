@@ -1,4 +1,4 @@
-const mongoose=require("mongoose")
+import mongoose from "mongoose"
 
 
 const ProductCatSchema=new mongoose.Schema({
@@ -12,4 +12,4 @@ slug:{
 }
 })
 const CategoryDetails=mongoose.model("ProductCategory",ProductCatSchema)
-module.exports=CategoryDetails
+export default CategoryDetails;

@@ -1,7 +1,7 @@
-const jwt=require("jsonwebtoken");
-const User = require("../models/usermodel");
+import jwt from "jsonwebtoken";
+import User from "../models/usermodel.js";
 
-const verifytoken=(req,res,next)=>{
+export const verifytoken=(req,res,next)=>{
     const authHeader=req.headers.authorization;
 console.log(authHeader)
     if(authHeader===undefined){
@@ -27,7 +27,7 @@ console.log(authHeader)
     
     }
   
-    const isAdmin = async (req, res, next) => {
+    export const isAdmin = async (req, res, next) => {
       try {
         const user = await User.findById(req.users._id);
     
@@ -51,7 +51,4 @@ console.log(authHeader)
     
       
    
-    module.exports={
     
-        isAdmin:isAdmin,
-        verifytoken:verifytoken}
