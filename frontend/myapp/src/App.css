@@ -1,0 +1,149 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  width: 100%;
+}
+.main{
+  display: flex;
+  align-items: center;
+  height: 100vh;
+ 
+
+}
+.bgclr{
+ background-color: #ffdee9;
+  background-image: linear-gradient(0deg, #ffdee9 0%, #b5fffc 100%);
+
+}
+.form ,.forms{
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 20px;
+  background-color: #fff;
+  margin: auto;
+  
+}
+.center{
+    text-align: center;
+}
+.btnsign{
+    margin-top:5px;
+    width: 100%;
+}
+.card-body:hover{
+  text-decoration: underline;
+}
+
+
+.card-body{
+  color: black;
+}
+
+.navbar {
+  font-family: "Poppins", sans-serif;
+  font-size: 17px;
+  line-height: 26px;
+  text-transform: uppercase;
+  box-shadow: 0 8px 6px -6px gray;
+  --webkit-box-shadow: 0 8px 6px -6px gray;
+  border-bottom: solid gray !important;
+}
+.nav-link:hover{
+  color:rgb(143, 134, 134)
+}
+
+.nav-link {
+  font-weight: 300 !important;
+}
+
+.active {
+  border-bottom: 2px solid rgb(15, 184, 52);
+  
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-family: "roboto", sans-serif;
+  letter-spacing: 3px;
+}
+.underline-animation {
+    position: relative;
+    display: inline-block;
+    text-decoration: none; /* Remove default underline */
+    color: #545252; /* Set link color */
+  }
+  
+  .underline-animation::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px; /* Adjust as needed */
+    bottom: -2px; /* Position the line underneath */
+    left: 0;
+    background-color: #8e9092; /* Set line color */
+    transform: scaleX(0); /* Start with no width */
+    transform-origin: right;
+    transition: transform 0.3s ease-in-out; /* Add animation */
+  }
+  
+  .underline-animation:hover::before {
+    transform: scaleX(1); /* Expand the line to full width on hover */
+    transform-origin: left;
+  }
+  .flex-wrap{
+    justify-content: center;
+    
+  }
+ 
+
+  
+.footer {
+  color: white;
+  padding: 25px;
+  background: #000000; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #434343,
+    #000000
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #434343, #000000);
+}
+
+.footer a {
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+}
+
+.footer a:hover {
+  color: #ffefba;
+  border-bottom: 1px solid #ffefba;
+}
+@media screen  and (max-width: 1400px)  {
+  .form{
+    width: 30%;
+  }
+}
+
+@media screen  and (min-width:768px) and (max-width: 991px)  {
+  .form{
+    width: 50%;
+  }
+}
+
+
+@media screen and (min-width:300px) and (max-width: 767px) {
+  .form{
+    width: 80%;
+  }
+  }
+
+
+  @media screen and (max-width: 300px) {
+    .form{
+      width: 100%;
+    }
+    }
+   
