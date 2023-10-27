@@ -4,9 +4,11 @@
   "description": "",
   "main": "script.js",
 
+
  "scripts": {
-"start": "script.js"
-},
+    "start": "node backend/script.js"
+  },
+
 
   
   "keywords": [],
