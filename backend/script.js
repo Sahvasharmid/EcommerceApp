@@ -1,9 +1,7 @@
 import express from "express";
-
 import dotenv from "dotenv";
-
-import {connectDB} from "./config/db.js";
-import authrouter from "./routers/authrouter.js";
+import {connectDB} from "./config/db.js"
+import authrouter from "./routers/authrouter.js"
 import catrouter from "./routers/catrouter.js";
 import  prodrouter from "./routers/prodrouter.js";
 import path from "path";
