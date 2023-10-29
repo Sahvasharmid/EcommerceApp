@@ -1,27 +1,21 @@
 {
-  "main": "script.js",
-  "type": "module",
-  "scripts": {
-    "start": "node script.js",
-    "script": "nodemon script.js"
-  },
   "dependencies": {
     "bcrypt": "^5.1.1",
-    "colors": "^1.4.0",
     "cors": "^2.8.5",
-    "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "express-formidable": "^1.2.0",
-    "jsonwebtoken": "^9.0.1",
-    "mongoose": "^7.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^7.6.3",
     "nodemon": "^3.0.1",
     "slugify": "^1.6.6"
   },
-  "devDependencies": {
-    "gh-pages": "^6.0.0"
-  },
   "name": "backend",
   "version": "1.0.0",
+  "main": "script.js",
+  "type": "module",
+  "scripts": {
+    "start": "node script.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Sahvasharmid/EcommerceApp.git"
